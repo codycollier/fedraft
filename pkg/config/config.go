@@ -1,4 +1,4 @@
-package acct
+package config
 
 import (
 	"errors"
