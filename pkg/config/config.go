@@ -9,6 +9,8 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
+const envPrefix = "fed"
+
 type config struct {
 
 	// Account info
@@ -42,7 +44,7 @@ func getConfig() (*config, error) {
 
 		// Retrieve config from env
 		newconf := &config{}
-		err := envconfig.Process("fed", newconf)
+		err := envconfig.Process(envPrefix, newconf)
 		if err != nil {
 			return nil, errors.New(err.Error())
 		}
@@ -63,5 +65,5 @@ func unsetConfig() {
 
 // Show usage / help
 func configHelp() {
-	log.Println(envconfig.Usage("fed", &config{}))
+	log.Println(envconfig.Usage(envPrefix, &config{}))
 }
